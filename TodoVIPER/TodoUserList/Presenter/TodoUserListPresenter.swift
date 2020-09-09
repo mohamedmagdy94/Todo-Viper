@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TodoUserListPresenter:PresenterToViewTodoUserListProtocol,PresenterToInteractorTodoUserListProtocol{
+class TodoUserListPresenter:TodoUserListPresenterProtocol{
     
     
     var view: ViewToPresenterTodoUserListProtocol?

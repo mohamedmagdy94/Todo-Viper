@@ -32,6 +32,9 @@ protocol PresenterToInteractorTodoUserListProtocol{
     func onUserFetched(with user: User)
 }
 
+typealias TodoUserListPresenterProtocol = PresenterToViewTodoUserListProtocol & PresenterToInteractorTodoUserListProtocol
+
+
 protocol RouterTodoUserListProtocol {
     func showUserDetails(from user: User)
 }

@@ -32,8 +32,7 @@ class TodoUserListNavigationRouter: RouterTodoUserListProtocol{
     }
         
     func showUserDetails(from user: User) {
-        let viewController = UIViewController()
-        self.viewController?.navigationController?.pushViewController(viewController, animated: true)
+        UserTodoListNavigationRouter.createModule(in: self.viewController ?? UIViewController(), with: "\(user.id)")
     }
     
 }
