@@ -32,6 +32,7 @@ class TodoUserListInteractor: InteractorToPresentTodoUserListProtocol{
                         weakSelf.presenter?.onUserListFetchFailed(with: TodoUserListError.ServerError)
                         return
                     }
+                    weakSelf.response = responseModel
                     weakSelf.presenter?.onUserListFetchSucceess(with: responseModel)
                 case .failure:
                     weakSelf.presenter?.onUserListFetchFailed(with: TodoUserListError.ServerError)

@@ -14,16 +14,26 @@ class TodoUserListNavigationRouter: RouterTodoUserListProtocol{
     static func createModule(in window: UIWindow){
         let viewController = UIViewController.create(storyboardName: "TodoUserList", viewControllerID: "TodoUserListViewController") as! TodoUserListViewController
         let interactor = TodoUserListInteractor(presenter: nil)
-        let presenter = TodoUserListPresenter(view: viewController, interactor: interactor, router: TodoUserListNavigationRouter())
+        let router = TodoUserListNavigationRouter(viewController: nil)
+        let presenter = TodoUserListPresenter(view: viewController, interactor: interactor, router: router)
         interactor.presenter = presenter
         viewController.presenter = presenter
+        router.viewController = viewController
+        presenter.router = router
         let navigationController = UINavigationController(rootViewController: viewController)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
+    
+    var viewController: UIViewController?
+    
+    init(viewController: UIViewController?) {
+        self.viewController = viewController
+    }
         
     func showUserDetails(from user: User) {
-        
+        let viewController = UIViewController()
+        self.viewController?.navigationController?.pushViewController(viewController, animated: true)
     }
     
 }

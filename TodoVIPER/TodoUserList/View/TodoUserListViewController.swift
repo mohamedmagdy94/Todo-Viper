@@ -43,6 +43,11 @@ extension TodoUserListViewController: ViewToPresenterTodoUserListProtocol{
 }
 
 extension TodoUserListViewController: UITableViewDataSource,UITableViewDelegate{
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.onUserSelected(with: indexPath.row)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter?.usersCellViewModels.count ?? 0
     }
